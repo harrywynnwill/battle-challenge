@@ -15,9 +15,15 @@ feature "Other player's hit points" do
 end
 
 feature 'Attacking' do
-  scenario 'attack player 2' do
+  scenario 'attack Mara' do
     sign_in_and_play
     click_button 'Attack'
     expect(page).to have_content 'Harry attacked Mara'
+  end
+  scenario 'reduce Maras HP by 10 points' do
+    sign_in_and_play
+    click_button 'Attack'
+    expect(page).not_to have_content 'Mittens: 60HP'
+    expect(page).to have_content 'Mittens: 50HP'
   end
 end
