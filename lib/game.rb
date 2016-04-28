@@ -1,6 +1,6 @@
 require './lib/player'
 class Game
-
+  attr_reader :player1, :player2
   def initialize(player1, player2)
     @players= [player1, player2]
   end
@@ -16,4 +16,13 @@ class Game
   def player2
     @players.last
   end
+  def current_player
+    player1
+  end
+  def switch_turn
+   @players = @players.reverse
+    current_player
+  end
+
+
 end

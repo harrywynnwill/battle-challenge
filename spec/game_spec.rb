@@ -20,4 +20,15 @@ describe Game do
       expect(game.attack(player2))
     end
   end
+  describe '#current_player' do
+    it 'tells the current player' do
+      expect(game.current_player)
+    end
+  end
+  describe '#switch turn' do
+    it 'switches the turn to the other player' do
+      game.switch_turn
+      expect(game.current_player).to eq player2
+    end
+  end
 end
