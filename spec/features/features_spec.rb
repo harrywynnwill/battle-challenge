@@ -10,7 +10,7 @@ end
 feature "Other player's hit points" do
   scenario 'see how close to winning' do
     sign_in_and_play
-    expect(page).to have_content 'Mara: 60HP'
+    expect(page).to have_content 'Mara: 100HP'
   end
 end
 
@@ -23,7 +23,7 @@ feature 'Attacking' do
   scenario 'reduce Maras HP by 10 points' do
     sign_in_and_play
     click_button 'Attack'
-    expect(page).not_to have_content 'Mara: 60HP'
-    expect(page).to have_content 'Mara: 50HP'
+    expect(page).not_to have_content 'Mara: 100HP'
+    expect(page).to have_content 'Mara: 90HP'
   end
 end
