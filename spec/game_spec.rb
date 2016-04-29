@@ -2,9 +2,15 @@ require 'game'
 
 describe Game do
   subject(:game) {described_class.new(player1, player2)}
-  let(:player1) { double :player}
-  let(:player2) { double :player}
+  subject(:finished_game) {described_class.new(dead_player, player1)}
+
+  let(:player1) { double :player, hit_points: 60} #why is hit points using symbols the other way??
+  let(:player2) { double :player, hit_points: 60}
+  let(:dead_player) {double :player, hit_points: 0}
+
   it { is_expected.to respond_to(:attack).with(1).argument }
+
+
 
   it 'starts with a first player' do
     expect(game.player1).to eq player1
@@ -29,6 +35,11 @@ describe Game do
     it 'switches the turn to the other player' do
       game.switch_turn
       expect(game.current_player).to eq player2
+    end
+  end
+  describe '#game_over' do
+    it 'returns true if the player has zero HP' do
+      expect(finished_game.game_over?).to be true
     end
   end
 end

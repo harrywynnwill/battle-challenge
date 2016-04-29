@@ -20,4 +20,11 @@ describe Player do
       expect { mara.receive_damage }.to change { mara.hit_points }.by(-10)
     end
   end
+  describe '#receive_damage_rand' do
+    it 'reduces the players hit point by a random number between 1 and 10' do
+    #allow(mara).to receive(:receive_damage_rand) {10}
+    allow(mara).to receive(:rand ) {10}
+    expect{mara.receive_damage_rand}.to change {mara.hit_points}.by(-10)
+    end
+  end
 end

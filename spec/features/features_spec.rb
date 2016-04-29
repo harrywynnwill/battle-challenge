@@ -25,5 +25,19 @@ feature 'Attacking' do
     click_button 'Attack'
     expect(page).not_to have_content 'Mara: 100HP'
     expect(page).to have_content 'Mara: 90HP'
+   end
+    scenario 'reduce Harry HP by 10 points' do
+    sign_in_and_play
+    click_button 'Attack'
+    click_button 'Attack'
+    click_button 'Attack'
+
+    expect(page).not_to have_content 'Harry: 100HP'
+    expect(page).to have_content 'Harry: 90HP'
+  end
+    scenario 'player loses if score goes below zero' do
+    sign_in_and_play
+    38.times do click_button 'Attack' end
+    expect(page).to have_content 'Loses'
   end
 end
